@@ -5,6 +5,7 @@ export const translations = {
     startLabel: 'Start',
     endLabel: 'Expected Completion',
     contactInfo: 'If you need immediate assistance, please contact us at',
+    noEndDate: 'No end date',
   },
   es: {
     title: 'Sitio En Mantenimiento',
@@ -12,6 +13,7 @@ export const translations = {
     startLabel: 'Inicio',
     endLabel: 'Finalización Estimada',
     contactInfo: 'Si necesita ayuda inmediata, contáctenos en',
+    noEndDate: 'Sin fecha de finalización',
   },
   fr: {
     title: 'Site En Maintenance',
@@ -19,5 +21,14 @@ export const translations = {
     startLabel: 'Début',
     endLabel: 'Fin Prévue',
     contactInfo: 'Si vous avez besoin d\'aide immédiate, contactez-nous à',
+    noEndDate: 'Pas de date de fin',
+  },
+  de: {
+    title: 'Website in Wartung',
+    description: 'Wir führen planmäßige Wartungsarbeiten durch, um unsere Dienstleistungen zu verbessern. Wir werden in Kürze wieder online sein.',
+    startLabel: 'Start',
+    endLabel: 'Voraussichtliches Ende',
+    contactInfo: 'Wenn Sie sofortige Hilfe benötigen, kontaktieren Sie uns bitte unter',
+    noEndDate: 'Kein Enddatum',
   }
 } as const;

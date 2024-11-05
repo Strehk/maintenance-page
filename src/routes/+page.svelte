@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { env } from '$env/dynamic/public';
+  import {env} from '$env/dynamic/public';
   import MaintenanceInfo from '$lib/components/MaintenanceInfo.svelte';
 
-  const title = env.PUBLIC_MAINTENANCE_TITLE || 'Site Under Maintenance';
-  const description = env.PUBLIC_MAINTENANCE_DESCRIPTION || 'We are performing scheduled maintenance. We will be back shortly.';
-  const startTime = env.PUBLIC_MAINTENANCE_START || 'Currently';
-  const endTime = env.PUBLIC_MAINTENANCE_END || 'Soon';
-  const contactEmail = env.PUBLIC_CONTACT_EMAIL || 'support@example.com';
+  const title = env.PUBLIC_MAINTENANCE_TITLE;
+  const description = env.PUBLIC_MAINTENANCE_DESCRIPTION;
+  const startTime = env.PUBLIC_MAINTENANCE_START ? new Date(env.PUBLIC_MAINTENANCE_START) : undefined;
+  const endTime =  env.PUBLIC_MAINTENANCE_END ? new Date(env.PUBLIC_MAINTENANCE_END) : undefined;
+  const contactEmail = env.PUBLIC_CONTACT_EMAIL;
 </script>
 
 <div class="maintenance-page">

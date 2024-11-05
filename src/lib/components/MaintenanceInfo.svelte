@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { t } from '../i18n/i18n';
-  import LanguageSelector from './LanguageSelector.svelte';
+  import { t, locale } from "../i18n/i18n";
+  import LanguageSelector from "./LanguageSelector.svelte";
 
   export let title: string;
   export let description: string;
-  export let startTime: string;
-  export let endTime: string;
+  export let startTime: Date | undefined;
+  export let endTime: Date | undefined;
   export let contactEmail: string;
 </script>
 
@@ -13,18 +13,48 @@
 
 <div class="maintenance-container">
   <div class="icon">🛠️</div>
-  <h1>{$t('title')}</h1>
-  <p class="description">{$t('description')}</p>
-  
+  <h1>{title ? title : $t("title")}</h1>
+  <p class="description">{description ? description : $t("description")}</p>
+
   <div class="time-info">
-    <p><strong>{$t('startLabel')}:</strong> {startTime}</p>
-    <p><strong>{$t('endLabel')}:</strong> {endTime}</p>
+    {#if startTime}
+      <p>
+        <strong>{$t("startLabel")}:</strong><br />
+        {startTime.toLocaleString($locale, {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          timeZoneName: "longGeneric",
+        })}
+      </p>
+    {/if}
+    <p>
+      <strong>{$t("endLabel")}:</strong><br />
+      {#if !endTime}
+        {$t("noEndDate")}
+      {:else}
+        {endTime.toLocaleString($locale, {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          timeZoneName: "longGeneric",
+        })}
+      {/if}
+    </p>
   </div>
 
-  <div class="contact">
-    <p>{$t('contactInfo')}:</p>
-    <a href="mailto:{contactEmail}">{contactEmail}</a>
-  </div>
+  {#if contactEmail}
+    <div class="contact">
+      <p>{$t("contactInfo")}:</p>
+      <a href="mailto:{contactEmail}">{contactEmail}</a>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -63,7 +93,7 @@
   }
 
   .time-info p {
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     color: #2c3e50;
   }
 

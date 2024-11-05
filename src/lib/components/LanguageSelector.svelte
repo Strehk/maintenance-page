@@ -3,6 +3,7 @@
 
   const languageNames = {
     en: 'English',
+    de: 'Deutsch',
     es: 'Español',
     fr: 'Français'
   } as const;
